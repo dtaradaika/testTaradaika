@@ -44,7 +44,8 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController : UICollectionViewDataSource {
+extension ViewController: UICollectionViewDataSource {
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsCounter
     }
@@ -54,7 +55,16 @@ extension ViewController : UICollectionViewDataSource {
         cell.backgroundColor = .red
         return cell
     }
-    
-    
 }
+
+extension ViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        itemsCounter = itemsCounter - 1
+        collectionView.deleteItems(at: [indexPath])
+    }
+}
+
+
 
