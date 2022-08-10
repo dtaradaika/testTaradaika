@@ -45,19 +45,36 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="wIv-hp-V7o"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEx-Tr-qnQ">
+                                <rect key="frame" x="8" y="543" width="398" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Dat-xt-cwh"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="tapAddItem" destination="BYZ-38-t0r" eventType="touchUpInside" id="3cs-5r-9AU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="k1R-iS-uAJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IIs-Wi-8KY"/>
+                            <constraint firstItem="TEx-Tr-qnQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ILO-MX-Ql5"/>
                             <constraint firstItem="k1R-iS-uAJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aNI-4z-MUu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TEx-Tr-qnQ" secondAttribute="trailing" constant="8" id="mdv-LC-aWr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k1R-iS-uAJ" secondAttribute="trailing" id="uTT-a4-J19"/>
+                            <constraint firstItem="TEx-Tr-qnQ" firstAttribute="top" secondItem="k1R-iS-uAJ" secondAttribute="bottom" constant="20" id="z7o-Pb-8dR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="k1R-iS-uAJ" id="CH0-rk-Wk8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-88" y="125"/>
+            <point key="canvasLocation" x="-328" y="117"/>
         </scene>
     </scenes>
     <resources>
