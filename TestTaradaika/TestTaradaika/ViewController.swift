@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(moveCell(gesture:)))
-        
+        gesture.delegate = self
         collectionView.addGestureRecognizer(gesture)
     }
     
@@ -40,7 +40,6 @@ class ViewController: UIViewController {
             self.itemsCounter = self.itemsCounter - 1
             self.collectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
         }
-        
     }
     
     @IBAction func tapAddItem() {
@@ -98,10 +97,6 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
         cell.backgroundColor = .red
         
-        
-        //gesture.delegate = self
-        //cell.addGestureRecognizer(gesture)
-        
         return cell
     }
 }
@@ -113,30 +108,12 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-
 extension ViewController: UIGestureRecognizerDelegate {
     
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
-    
-//    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//       
-//    
-//        guard let panGesture = gestureRecognizer as? UIPanGestureRecognizer,
-//              let cellView = panGesture.view else {
-//            return false
-//        }
-//        
-//        let velocity = panGesture.velocity(in: cellView)
-//        
-//      //  if velocity.y > 10 {
-//            print( " > \(velocity.y)")
-//       // }
-//        
-//        return true
-//        
-//    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+   
 }
 
 
