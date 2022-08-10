@@ -9,13 +9,16 @@ import UIKit
 
 //class DataSource {
 //
-//    var items: []
+//    let lock = NSLock()
+//    var itemsCounter: Int = 0
+//
+//    func append() {
+//        lock.lock()
+//        itemsCounter = itemsCounter + 1
+//    }
 //
 //
 //}
-
-
-
 
 class ViewController: UIViewController {
 
@@ -28,17 +31,27 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func addItem() {
-        itemsCounter = itemsCounter + 1
-        collectionView.reloadData()
+    public func addItem() {
+        DispatchQueue.main.async {
+            
+            self.itemsCounter = self.itemsCounter + 1
+            
+            self.collectionView.reloadData()
+            self.collectionView.scrollToItem(at: IndexPath(item: self.itemsCounter - 1, section: 0), at: .right, animated: true)
+        }
+    }
+    
+    public func removeItem(index: Int) {
         
+        DispatchQueue.main.async {
+            self.itemsCounter = self.itemsCounter - 1
+            self.collectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+        }
         
-        collectionView.scrollToItem(at: IndexPath(item: itemsCounter - 1, section: 0), at: .right, animated: true)
     }
     
     @IBAction func tapAddItem() {
         addItem()
-        
     }
 
 
@@ -60,9 +73,7 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        itemsCounter = itemsCounter - 1
-        collectionView.deleteItems(at: [indexPath])
+        removeItem(index: indexPath.item)
     }
 }
 
